@@ -1,5 +1,7 @@
 package mihalcin.clean;
 
+import static mihalcin.clean.OrderItemOperations.DISCOUNT;
+
 import org.junit.Test;
 
 public class OrderTest {
@@ -9,6 +11,7 @@ public class OrderTest {
         Order order = Order.of(OrderNumber.of(1));
         order.getItems().getQuantity();
         order.getDiscountedItems().getQuantity();
+        order.apply(DISCOUNT);
     }
 
 }

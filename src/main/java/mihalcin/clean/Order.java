@@ -1,6 +1,7 @@
 package mihalcin.clean;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static java.util.stream.Collectors.toList;
 
 import java.io.Serializable;
 import java.util.List;
@@ -62,5 +63,11 @@ public class Order implements Serializable {
         if (!items.contains(item)) {
             items.add(item);
         }
+    }
+
+    public void apply(OrderItemOperation operation) {
+        items = items.stream()
+                .map(operation)
+                .collect(toList());
     }
 }
